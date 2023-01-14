@@ -6,11 +6,10 @@ import axios from 'axios';
 //components
 import Header from '../Header/Header.jsx';
 import GalleryList from '../GalleryList/GalleryList.jsx';
-import { response } from 'express';
 
 
 function App() {
-  const [photo, setPhoto] = useState('');
+  const [photos, setPhotos] = useState('');
 
   useEffect(() => {
     getPhotos();
@@ -18,17 +17,24 @@ function App() {
   //function once when the page uploads
 
   //get request
-  const getPhotos() => {
+  const getPhotos = () => {
     axios.get('/gallery')
-    .then(response =>{
-      
+    .then(response => {
+      setPhotos(response.data);
+      console.log('got photos!');
+    })
+    .catch(error => {
+      alert('error getting photos');
+      console.log(error);
     })
   }
 
     return (
       <div className="App">
         <Header />
-        <GalleryList />
+        <GalleryList 
+          getPhotos={getPhotos}
+        />
         <p>Gallery goes here</p>
         <img src="images/goat_small.jpg"/>
       </div>

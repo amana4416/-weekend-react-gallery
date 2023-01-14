@@ -1,9 +1,9 @@
+import axios from 'axios';
 
-
-function GalleryList () {
+function GalleryList ({setPhotos, getPhotos}) {
     return (
         <>
-            
+
         </>
     )
 }
