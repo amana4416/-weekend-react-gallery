@@ -9,6 +9,9 @@ function GalleryItem({picture, getPhotos}) {
     
     //set the initial like count to be the picture.likes
     const [likeCount, setLikeCount] = useState(picture.likes);
+    //this is so when page is loaded,it only shows picture right away,
+    //when it is changed to false 
+    let [photoStatus, setPhotoStatus] = useState(true);
 
     const addLike = (id) => {
         axios.put(`/gallery/like/${id}`)
@@ -23,22 +26,65 @@ function GalleryItem({picture, getPhotos}) {
         })
     }
 
-
-
+    const showDescription = () => {
+        console.log('you selected a kitten');
+        if (photoStatus === true) {
+            setPhotoStatus(false);
+        } else {
+            setPhotoStatus(true);
+        }
+    }
 
     return (
         <>
-            <div className="photoBackground">
-                <div>
-                    <h3>{picture.name}</h3>
-                </div>
-                    <img src={picture.path} />
-                <div>
-                    <button onClick={() => addLike(picture.id)}>Like</button>
-                    <span>{picture.likes} like this photo</span>
-                </div>
-            </div>
-        </>
+
+        <div>
+            <section>
+                {photoStatus ?
+                    <>
+                        <div>
+                            <h4>{picture.name}</h4>
+                        </div>
+                        <img src={picture.path} onClick={showDescription} />
+                        <div>
+                            <p> {picture.likes} are interested in this kitten</p>
+                        </div>
+                        <div>
+                            <button onClick={() => addLike(picture.id)}>Like</button>
+                        </div>
+                    </>
+
+
+                    : //ternarry switch
+
+                    <div className="descriptionMode">
+                        <div>
+                            <h4>{picture.name}</h4>
+                        </div>
+                        <div onClick={showDescription}>
+                            <p>{picture.description}</p>
+                        </div>
+                        <div>
+                            <p> {picture.likes} are interested in this kitten</p>
+                        </div>
+                        <div>
+                            <button onClick={() => addLike(picture.id)}>Likes</button>
+                        </div>
+
+                    </div>
+                }
+            </section>
+        </div>
+
+
+    </>
+
+
+
+
+
+
+           
     )
 }
 
