@@ -20,11 +20,11 @@ function App() {
   //get request
   const getPhotos = () => {
     axios.get('/gallery')
-    .then(response => {
+    .then((response) => {
       setPhotos(response.data);
       console.log('got photos!');
     })
-    .catch(error => {
+    .catch((error) => {
       alert('error getting photos');
       console.log(error);
     })
