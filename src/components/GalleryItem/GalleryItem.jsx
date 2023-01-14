@@ -1,15 +1,20 @@
+import axios from 'axios';
 import GalleryList from "../GalleryList/GalleryList";
+import './GalleryItem.css';
 
-//importing picture as a prop over from GalleryList
+//importing picture as a prop over that was passed through GalleryList.jsx 
+//but originally came from App.jsx
 function GalleryItem({picture, getPhotos}) {
+    
+    getPhotos();
+    
     return (
         <>
-            <h1>Available Kittens</h1>
-            <div>
+            <div className="photoBackground">
                 <div>
                     <h3>Name</h3>
                 </div>
-                <img src={picture.path} />
+                    <img src={picture.path} />
                 <div>
                     <button className="LikeButton">Likes</button>
                 </div>

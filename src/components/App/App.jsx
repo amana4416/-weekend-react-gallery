@@ -9,6 +9,7 @@ import GalleryList from '../GalleryList/GalleryList.jsx';
 
 
 function App() {
+  //we're feeding photos an array, so it needs to be set to an empty array to begin
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
@@ -36,8 +37,6 @@ function App() {
           getPhotos={getPhotos}
           photos={photos}
         />
-        <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg"/>
       </div>
     );
 }
