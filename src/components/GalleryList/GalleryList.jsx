@@ -1,4 +1,4 @@
-import axios from 'axios';
+import {useState} from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 import './GalleryList.css';
 
@@ -11,17 +11,18 @@ function GalleryList ({photos, getPhotos}) {
   
 
     return (
-        <>
+        <div>
         <h2>Available Kittens:</h2>
-        {photos.map((picture) => {
-            <section className="allPosts" key={[picture.id]}>
-                <GalleryItem 
-                    picture={picture} 
-                    getPhotos={getPhotos} 
+        {photos.map(picture => {
+            return(
+                <GalleryItem
+                    key={[picture.id]}
+                    picture={picture}
+                    getPhotos={getPhotos}
                 />
-            </section>
+            )
         })}
-    </>
+    </div>
     )
 }
 
