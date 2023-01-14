@@ -6,13 +6,14 @@ import GalleryItem from '../GalleryItem/GalleryItem.jsx';
 function GalleryList ({photos, getPhotos}) {
     return (
         <>
-            {photos.map(picture => (
+        {photos.map((picture) => {
+            <section className="allPosts" key={[picture.id]}>
                 <GalleryItem 
-                    getPhotos={getPhotos}
                     picture={picture}
-                />  
-            ))}
-        </>
+                />
+            </section>
+        })}
+    </>
     )
 }
 

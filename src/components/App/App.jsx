@@ -9,7 +9,7 @@ import GalleryList from '../GalleryList/GalleryList.jsx';
 
 
 function App() {
-  const [photos, setPhotos] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
     getPhotos();
@@ -34,6 +34,7 @@ function App() {
         <Header />
         <GalleryList 
           getPhotos={getPhotos}
+          photos={photos}
         />
         <p>Gallery goes here</p>
         <img src="images/goat_small.jpg"/>
