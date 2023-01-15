@@ -3,7 +3,8 @@ import axios from 'axios';
 import GalleryList from "../GalleryList/GalleryList";
 import './GalleryItem.css';
 //mui styling
-import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 //importing picture as a prop over that was passed through GalleryList.jsx 
 //but originally came from App.jsx
@@ -15,6 +16,7 @@ function GalleryItem({picture, getPhotos}) {
     //when it is changed to false it will show the description
     let [photoStatus, setPhotoStatus] = useState(true);
 
+    //put request -- adding likes ('showing interest in kitten)
     const addLike = (id) => {
         axios({
             method: `put`,
@@ -35,6 +37,7 @@ function GalleryItem({picture, getPhotos}) {
         })
     }
 
+    //conditional rendering to show photoStatus as true or false
     const showDescription = () => {
         console.log('you selected a kitten');
         if (photoStatus === true) {
@@ -42,6 +45,19 @@ function GalleryItem({picture, getPhotos}) {
         } else {
             setPhotoStatus(true);
         }
+    }
+
+    //delete request
+    const deleteKitten = (id) => {
+        axios.delete(`/gallery/${picture.id}`)
+        .then(response => {
+            console.log('deleting a kitten from the list');
+            getPhotos();
+        })
+        .catch(error => {
+            alert('error in deleteKitten /delete');
+            console.log(error);
+        })
     }
 
     return (
@@ -53,23 +69,24 @@ function GalleryItem({picture, getPhotos}) {
                 {/* default photoStatus is true, so all images will show when page is loaded */}
                 {photoStatus ?
                     <>
-                        <div>
+                        <div className='kittenName'>
                             <h4>{picture.name}</h4>
                         </div>
                         <img src={picture.path} onClick={showDescription} />
                         <div>
                             <p className='likes'> {picture.likes} people are interested in this kitten</p>
                         </div>
-                        <div>
-                            <Button 
-                                variant="contained" 
-                                size="medium" 
+                        <section>
+                            <FavoriteBorderIcon 
+                                className='likeButton'
+                                size='large'
                                 onClick={() => addLike(picture.id)}
-                                sx={{ color: '#FFFFFF', backgroundColor: '#353535' }}
-                                >
-                                Like
-                            </Button>
-                        </div>
+                            />
+                            <DeleteIcon
+                                className='deleteButton'
+                                onClick={() => deleteKitten(picture.id)}
+                            />
+                        </section>
                     </>
 
                     : //ternarry switch
@@ -84,16 +101,17 @@ function GalleryItem({picture, getPhotos}) {
                         <div>
                             <p className='Description' > {picture.likes} people are interested in this kitten</p>
                         </div>
-                        <div>
-                            <Button 
-                                variant="contained" 
-                                size="medium"
+                        <section>
+                            <FavoriteBorderIcon 
+                                className='likeButton'
+                                size='large'
                                 onClick={() => addLike(picture.id)}
-                                sx={{ color: '#FFFFFF', backgroundColor: '#353535' }}
-                                >
-                                Like
-                            </Button>
-                        </div>
+                            />
+                            <DeleteIcon
+                                className='deleteButton'
+                                onClick={() => deleteKitten(picture.id)}
+                            />
+                        </section>
                     </div>
                 }
             </section>

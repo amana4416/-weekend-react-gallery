@@ -76,4 +76,23 @@ router.post('/', (req, res) => {
         })
 })
 
+//DELETE route
+router.delete('/:id', (req, res) => {
+    let id = req.params.id
+    let sqlValues = [id]
+    const sqlText = `
+        DELETE FROM "kittens"
+            WHERE "id"=$1;
+    `;
+    pool.query(sqlText, sqlValues)
+        .then((dbRes) => {
+            console.log('deleting a kitten from database');
+            res.sendStatus(201);
+        })
+        .catch ((dbErr) => {
+            console.log('error in server delete route', dbErr);
+            res.sendStatus(500);
+        })
+})
+
 module.exports = router;
