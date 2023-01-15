@@ -34,10 +34,10 @@ function GalleryForm() {
                 onChange={(event) => setPath(event.target.value)}
             />
             <Button 
-            variant="contained" 
-            size="small" 
-            onClick={() => addLike(picture.id)}
-            sx={{ color: '#FFFFFF', backgroundColor: '#8A897C' }}
+                variant="contained" 
+                size="small" 
+                onClick={() => addLike(picture.id)}
+                sx={{ color: '#FFFFFF', backgroundColor: '#8A897C' }}
             >
                 Add Kitten for Adoption
             </Button>
