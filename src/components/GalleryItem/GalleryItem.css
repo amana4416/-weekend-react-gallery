@@ -13,6 +13,7 @@ img {
 p {
     color: #353535;
 }
+
  .kittenInfo{
     display: inline-flex;
  }
@@ -41,3 +42,13 @@ p {
     justify-content: center;
 }
 
+.deleteButton {
+    color: #CC2936;
+    /* float: right; */
+    margin-left: 20px;
+}
+
+.likeButton {
+    align-items: center;
+    color: #353535;
+}
