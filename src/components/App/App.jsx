@@ -5,6 +5,7 @@ import axios from 'axios';
 
 //components
 import Header from '../Header/Header.jsx';
+import GalleryForm from '../GalleryForm/GalleryForm';
 import GalleryList from '../GalleryList/GalleryList.jsx';
 
 
@@ -33,6 +34,7 @@ function App() {
     return (
       <div className="App">
          <Header />
+         <GalleryForm />
         <GalleryList 
           getPhotos={getPhotos}
           photos={photos}
