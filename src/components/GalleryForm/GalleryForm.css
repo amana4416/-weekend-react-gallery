@@ -1,6 +1,4 @@
-input {
-    height: 25px;
-    margin-right: 25px;
-    margin-bottom: 25px;
+.input {
     font-size: 15px;
+    height: 30px;
 }

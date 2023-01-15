@@ -7,13 +7,13 @@ const pool = require('../modules/pool.js');
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
-    let increaseLikes = req.body.likes += 1;
-    let sqlText = `
+    const increaseLikes = req.body.likes += 1;
+    const sqlText = `
         UPDATE "kittens"
             SET "likes"=$1
             WHERE "id"=$2;
     `;
-    let sqlValues = [increaseLikes, req.params.id];
+    const sqlValues = [increaseLikes, req.params.id];
     pool.query(sqlText, sqlValues)
     .then((dbRes) => {
         console.log('showed interest in a kitten');
@@ -37,7 +37,7 @@ router.put('/like/:id', (req, res) => {
 // GET Route
 router.get('/', (req, res) => {
     console.log('sending kittens to client');
-    let sqlText = `
+    const sqlText = `
     SELECT * FROM "kittens"
         ORDER BY "id";
     `;
@@ -55,5 +55,25 @@ router.get('/', (req, res) => {
 // router.get('/', (req, res) => {
 //     res.send(galleryItems);
 // }); // END GET Route
+
+
+//POST route
+router.post('/', (req, res) => {
+    const kitten = req.body;
+    const sqlText =`
+        INSERT INTO "kittens" ("name", "description", "path")
+            VALUES ($1, $2, $3);
+    `;
+    const sqlParams = [kitten.name, kitten.description, kitten.path];
+    pool.query(sqlText, sqlParams)
+        .then((dbRes) => {
+            console.log(`Added a kitten for addoption`);
+            res.sendStatus(201);
+        })
+        .catch((dbErr) => {
+            console.log(`error in server post route ${sqlText}`, dbErr);
+            res.sendStatus(500);
+        })
+})
 
 module.exports = router;
