@@ -34,7 +34,9 @@ function App() {
     return (
       <div className="App">
          <Header />
-         <GalleryForm />
+         <GalleryForm 
+          getPhotos={getPhotos}
+         />
         <GalleryList 
           getPhotos={getPhotos}
           photos={photos}
