@@ -5,7 +5,6 @@ import './GalleryItem.css';
 //mui styling
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 
 //importing picture as a prop over that was passed through GalleryList.jsx 
 //but originally came from App.jsx
@@ -18,7 +17,13 @@ function GalleryItem({picture, getPhotos}) {
     let [photoStatus, setPhotoStatus] = useState(true);
 
     const addLike = (id) => {
-        axios.put(`/gallery/like/${id}`)
+        axios({
+            method: `put`,
+            url: `/gallery/like/${picture.id}`,
+            data: {
+                likes: likeCount
+            }
+        })
         .then((response) => {
             console.log('you liked a kitten');
             //like count will increase each time the like button is clicked
@@ -94,16 +99,7 @@ function GalleryItem({picture, getPhotos}) {
                 }
             </section>
         </div>
-
-
-    </>
-
-
-
-
-
-
-           
+    </>    
     )
 }
 
