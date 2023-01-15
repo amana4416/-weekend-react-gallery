@@ -1,3 +1,43 @@
-img {
-    
+body {
+    background-color: #353535;
 }
+h4 {
+    color: #353535;
+}
+
+img {
+    height: 250px;
+    width: 250px;
+}
+
+p {
+    color: #353535;
+}
+ .kittenInfo{
+    display: inline-flex;
+ }
+
+.card {
+    background-color: #BDBBB0;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    height: 410px;
+    width: 375px;
+}
+
+.DescriptionBackground {
+    background-color: #D2D7DF;
+    height: 250px;
+    width: 250px;
+    margin: 0 auto;
+    margin-bottom: 19.5px;
+}
+
+.Description {
+    color: #353535;
+    align-items: center;
+    justify-content: center;
+}
+
