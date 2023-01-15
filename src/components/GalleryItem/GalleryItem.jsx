@@ -4,7 +4,8 @@ import GalleryList from "../GalleryList/GalleryList";
 import './GalleryItem.css';
 //mui styling
 import DeleteIcon from '@mui/icons-material/Delete';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import Paper from '@mui/material/Paper';
 
 //importing picture as a prop over that was passed through GalleryList.jsx 
 //but originally came from App.jsx
@@ -65,7 +66,7 @@ function GalleryItem({picture, getPhotos}) {
 
         {/* conditional rendering when the photoStatus is true, it will display the photo */}
         <div className="kittenInfo">
-            <section className="card">
+            <Paper className='card' sx={{backgroundColor: '#BDBBB0'}}>
                 {/* default photoStatus is true, so all images will show when page is loaded */}
                 {photoStatus ?
                     <>
@@ -77,7 +78,7 @@ function GalleryItem({picture, getPhotos}) {
                             <p className='likes'> {picture.likes} people are interested in this kitten</p>
                         </div>
                         <section>
-                            <FavoriteBorderIcon 
+                            <FavoriteIcon 
                                 className='likeButton'
                                 size='large'
                                 onClick={() => addLike(picture.id)}
@@ -102,7 +103,7 @@ function GalleryItem({picture, getPhotos}) {
                             <p className='Description' > {picture.likes} people are interested in this kitten</p>
                         </div>
                         <section>
-                            <FavoriteBorderIcon 
+                            <FavoriteIcon 
                                 className='likeButton'
                                 size='large'
                                 onClick={() => addLike(picture.id)}
@@ -114,7 +115,7 @@ function GalleryItem({picture, getPhotos}) {
                         </section>
                     </div>
                 }
-            </section>
+            </Paper>
         </div>
     </>    
     )

@@ -39,7 +39,7 @@ function GalleryForm({getPhotos}) {
    return (
     <>
         <h2>Add a Kitten for Adoption:</h2>
-        <form onSubmit={handleSubmit}>
+        <form>
             <TextField
                 className='input'
                 variant="standard"
@@ -70,7 +70,7 @@ function GalleryForm({getPhotos}) {
                 type="submit"
                 variant="contained" 
                 size="small" 
-                onClick={() => addLike(picture.id)}
+                onClick={handleSubmit}
                 sx={{ color: '#FFFFFF', backgroundColor: '#8A897C' }}
             >
                 Add Kitten for Adoption
