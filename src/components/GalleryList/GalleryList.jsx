@@ -11,7 +11,7 @@ function GalleryList ({photos, getPhotos}) {
         <div>
         <h2>Available Kittens:</h2>
         {photos.map(picture => {
-            return(
+            return (
                 <GalleryItem
                     key={[picture.id]}
                     picture={picture}

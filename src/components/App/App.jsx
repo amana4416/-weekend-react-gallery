@@ -32,7 +32,7 @@ function App() {
 
     return (
       <div className="App">
-        <Header />
+         <Header />
         <GalleryList 
           getPhotos={getPhotos}
           photos={photos}
