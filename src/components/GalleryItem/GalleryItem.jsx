@@ -4,7 +4,6 @@ import GalleryList from "../GalleryList/GalleryList";
 import './GalleryItem.css';
 //mui styling
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
 
 //importing picture as a prop over that was passed through GalleryList.jsx 
 //but originally came from App.jsx
